@@ -34,3 +34,9 @@ You can configure:
 
 ## Output
 Files are written to `data/` (one folder per assignment).
+
+
+
+TODO: Moodle VL und Übungen laden 
+TODO: RösslPlatform Slides laden (full zip z.b)
+TODO: Vorhandene Dateien ersetzen oder nicht speichern  (setting per config)
