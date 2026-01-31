@@ -5,7 +5,7 @@ from getpass import getpass
 from playwright.sync_api import sync_playwright, Page
 from urllib.parse import urlparse
 
-from components.utils import full_url, safe_filename , suggest_filename
+from app.components.utils import full_url, safe_filename , suggest_filename
 
 
 class Scraper:
@@ -84,7 +84,7 @@ class Scraper:
             page.goto(start_url, wait_until="networkidle")
 
             links = self.collect_links(page)
-            print(f"Gefunden: {len(links)} Seiten")
+            print(f"Found: {len(links)} pages")
 
             for i, url in enumerate(links, 1):
                 print(f"[{i}/{len(links)}] {url}")

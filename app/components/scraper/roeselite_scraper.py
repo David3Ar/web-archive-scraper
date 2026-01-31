@@ -5,8 +5,9 @@ import re
 from urllib.parse import urlparse
 from playwright.sync_api import Page
 
-from components.base import BaseScraper, BaseConfig
-from components.utils import full_url
+from app.components.base import BaseScraper
+from app.base_config.base_config import BaseConfig
+from app.components.utils import full_url
 
 
 class RoeseliteScraper(BaseScraper):

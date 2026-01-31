@@ -1,17 +1,17 @@
 """
-Example configuration for Moodle scraper.
+Base configuration for Moodle scraper.
 """
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Optional
 
-from components.base import BaseConfig
+from app.base_config.base_config import BaseConfig
 
 
 @dataclass(frozen=True)
 class MoodleConfig(BaseConfig):
     """
-    Configuration for Moodle learning platform scraper.
+    Base configuration for Moodle learning platform scraper.
     Extends BaseConfig with Moodle-specific settings.
     """
     # Base URLs / Navigation
@@ -20,20 +20,20 @@ class MoodleConfig(BaseConfig):
     login_path: str = "/login/index.php"
     
     # Login form selectors (adjust if your Moodle uses different selectors)
-    sel_user: str = 'input[name="username"]'
-    sel_pass: str = 'input[name="password"]'
+    sel_user: str = 'input[type="text"]'
+    sel_pass: str = 'input[type="password"]'
     sel_submit: str = 'button[type="submit"]'
     
     # Security: Restrict downloads to trusted hosts only
     allowed_resource_hosts: tuple[str, ...] = ("elearning.ovgu.de",)
     
-    # Resource download policy
+    # Resource download policy FOR ROSELITE!
     include_mode_raw: bool = False
     include_mode_dl: bool = True
-    include_archive_zip: bool = True
+    include_archive_zip: bool = True        # zip if present
     include_archive_tgz: bool = False
     include_images: bool = False
-    include_pdfs: bool = True                 # Enable PDF downloads for Moodle
+    include_pdfs: bool = False                 
     include_url_txt: bool = False
     
     # Runtime / Browser settings
@@ -50,27 +50,4 @@ class MoodleConfig(BaseConfig):
     # Moodle-specific: Which module types to scrape
     # None = use default ("/mod/resource/view.php", "/mod/folder/view.php")
     resource_module_patterns: Optional[tuple[str, ...]] = None
-
-
-def main() -> None:
-    """Main entry point for Moodle scraper."""
-    from components.base import create_scraper
-    
-    # Optionally specify which Moodle module types to scrape
-    # Default: ("/mod/resource/view.php", "/mod/folder/view.php")
-    # You can add more like "/mod/url/view.php", "/mod/page/view.php", etc.
-    cfg = MoodleConfig(
-        resource_module_patterns=(
-            "/mod/resource/view.php",
-            "/mod/folder/view.php",
-            # "/mod/url/view.php",  # Uncomment if you want to scrape URL resources
-        )
-    )
-    
-    scraper = create_scraper(cfg)
-    scraper.run()
-
-
-if __name__ == "__main__":
-    main()
 
