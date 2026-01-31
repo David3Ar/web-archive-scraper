@@ -9,7 +9,7 @@ from components.base import BaseScraper, BaseConfig
 from components.utils import full_url
 
 
-class RoesseliteScraper(BaseScraper):
+class RoessliteScraper(BaseScraper):
     """
     Scraper for the Roesselite assignment platform (se.cs.ovgu.de).
     
