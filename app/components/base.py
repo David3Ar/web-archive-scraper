@@ -226,15 +226,15 @@ def create_scraper(cfg: BaseConfig) -> BaseScraper:
         ValueError: If config type is not recognized
     """
     # Import here to avoid circular dependencies
-    from components.se_scraper import RoessliteScraper
+    from components.roeselite_scraper import RoeseliteScraper
     from components.moodle_scraper import MoodleScraper
     
     # Check config type and create appropriate scraper
     cfg_type = type(cfg).__name__
     
     if cfg_type == "SEConfig":
-        # SEConfig (Roesslite platform)
-        return RoessliteScraper(cfg, cfg.allow_path_regex)
+        # SEConfig (Roeselite platform)
+        return RoeseliteScraper(cfg, cfg.allow_path_regex)
     elif cfg_type == "MoodleConfig":
         # MoodleConfig
         # Use resource_module_patterns from config, or default

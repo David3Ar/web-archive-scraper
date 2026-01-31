@@ -1,5 +1,5 @@
 """
-Roesselite platform scraper (formerly SE scraper).
+Roeselite platform scraper (formerly SE scraper).
 """
 import re
 from urllib.parse import urlparse
@@ -9,9 +9,9 @@ from components.base import BaseScraper, BaseConfig
 from components.utils import full_url
 
 
-class RoessliteScraper(BaseScraper):
+class RoeseliteScraper(BaseScraper):
     """
-    Scraper for the Roesselite assignment platform (se.cs.ovgu.de).
+    Scraper for the Roeselite assignment platform (se.cs.ovgu.de).
     
     Collects assignment pages based on allow_path_regex and downloads
     attachments using mode=dl, mode=raw, and file extensions.
