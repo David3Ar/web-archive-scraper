@@ -171,7 +171,7 @@ class Scraper:
                 if not resp.ok:
                     print(f"  ⚠ skip (HTTP {resp.status}): {url}")
                     continue
-                print(f"--------------{att_dir}. ---------")
+                
                 filename = suggest_filename(url, att_dir)
                 target = att_dir / filename
 

@@ -36,7 +36,7 @@ class SEConfig:
     allowed_resource_hosts = ("se.cs.ovgu.de",)
 
     # --------------------------------------------------
-    # Resource download policy
+    # Ressource download policy
     # Controls which linked resources are saved
     # --------------------------------------------------
 
@@ -54,7 +54,7 @@ class SEConfig:
     # --------------------------------------------------
 
     profile_dir: str = ".pw_profile_se"        # persistent browser profile (cookies, session)
-    out_dir: Path = Path("data")               # root output directory
+    out_dir: Path = Path("data/se2526")               # root output directory
 
     pdf_format: str = "A4"                     # PDF page size
     print_background: bool = True              # include background graphics in PDFs
