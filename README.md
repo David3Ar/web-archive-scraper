@@ -25,8 +25,8 @@ Session data is stored in the configured profile directory.
 
 Example:
 ```
-python app/configs/se_config.py
-python app/configs/theoinf_config.py
+python app/configs/se_run.py
+python app/configs/theoinf_run.py
 ```
 
 ### Config
@@ -47,7 +47,6 @@ You can create your own config file for any other module running on 'Moodle' or 
 
 _Find config files in `app/base_config/` and discover all configuration options._
   
-  
 #### Platform Notes
   
 ##### Moodle: 
@@ -61,9 +60,14 @@ _Find config files in `app/base_config/` and discover all configuration options.
 ## Output
 All files are written relative to specified `out_dir`.
 
+### TODO:
+- [ ] Moodle: fix: When running in headless mode: 
+      ⚠ Error loading page: Page.goto: Download is starting
 
-TODO:
-Roeselite: slide downloads
-Moodle: test alternative layouts / modules
-Output: enable relative or absolute out_dir
-
+- [ ] Moodle: Enable download of Protected files (e.g. IntSys)
+- [ ] Roeselite: Enable download lecture slides
+- [ ] Fix Fallback to ClickDownloader wenn strategy is `auto` and file exists
+- [ ] Move `allow_path_regex(self) -> str:` in `roselite_congig.py` to logic layer
+- [ ] Refactor Downloader and Scrappe Classes - Extract into shared methods avoid duplicated code
+- [ ] Try: Move main() logic into baseconfig 
+- [ ] Output: enable relative or absolute out_dir

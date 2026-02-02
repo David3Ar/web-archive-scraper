@@ -25,18 +25,14 @@ class BaseConfig:
     # Security: Restrict downloads to trusted hosts only
     allowed_resource_hosts: tuple[str, ...] = ()
     
-    # Resource download policy
-    include_mode_raw: bool = False
-    include_mode_dl: bool = True
-    include_archive_zip: bool = True
-    include_archive_tgz: bool = False
-    include_images: bool = False
-    include_pdfs: bool = False
-    include_url_txt: bool = False
+    # Profile settings
+    profile_dir: str = ".pw_base_profile"
     
-    # Runtime / Browser settings
-    profile_dir: str = ".pw_profile"
-    out_dir: Path = Path("data")
+    # Output settings
+    out_dir: Path = Path("data/base-fallback")
+    replace_existing_files: bool = False
+    
+    # PDF settings
     pdf_format: str = "A4"
     print_background: bool = True
     headless: bool = True
@@ -44,6 +40,11 @@ class BaseConfig:
     # Downloader strategy: "request", "click", or "auto" (try request first, fallback to click)
     downloader_strategy: str = "auto"
     
-    # File replacement policy: If True, existing files will be replaced. If False, downloads will be skipped if file exists.
-    replace_existing_files: bool = False
-
+    # Resource download policy
+    include_mode_raw: bool = False            # save raw/text views (?mode=raw)
+    include_mode_dl: bool = True              # save download links (?mode=dl)
+    include_archive_zip: bool = True          # allow .zip archives
+    include_archive_tgz: bool = False         # allow .tgz / .tar.gz / .gz archives
+    include_images: bool = False              # allow image files (png, jpg, jpeg)
+    include_pdfs: bool = False                # allow PDF files
+    include_url_txt: bool = False             # write a url.txt file per page

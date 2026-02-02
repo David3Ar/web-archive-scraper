@@ -24,28 +24,18 @@ class RoeseliteConfig(BaseConfig):
     sel_submit: str = 'input[type="submit"]'
     
     # Security: Restrict downloads to trusted hosts only
-    allowed_resource_hosts: tuple[str, ...] = ("se.cs.ovgu.de",)
-    
-    # Resource download policy
-    include_mode_raw: bool = False            # save raw/text views (?mode=raw)
-    include_mode_dl: bool = True              # save download links (?mode=dl)
-    include_archive_zip: bool = True          # allow .zip archives
-    include_archive_tgz: bool = False         # allow .tgz / .tar.gz / .gz archives
-    include_images: bool = False              # allow image files (png, jpg, jpeg)
-    include_pdfs: bool = False                # allow PDF files
-    include_url_txt: bool = False             # write a url.txt file per page
+    allowed_resource_hosts: tuple[str, ...] = ("*.cs.ovgu.de",)
     
     # Runtime / Browser settings
-    profile_dir: str = ".pw_profile_roeselite"  # persistent browser profile (cookies, session)
-    out_dir: Path = Path("data/roeselite")       # root output directory
-    pdf_format: str = "A4"                        # PDF page size
-    print_background: bool = True                 # include background graphics in PDFs
-    headless: bool = True                         # run browser without UI
+    profile_dir: str = ".pw_profile_roeselite"
+    out_dir: Path = Path("data/roeselite-fallback")
     
-    # Downloader strategy: "request", "click", or "auto"
-    downloader_strategy: str = "auto"
     
-    # Page filtering (Roeselite-specific)
+    #########################################################
+    # Roeselite-specific settings
+    #########################################################
+    
+    # Page filtering
     include_submissions: bool = False         # also process secondary/detail pages (optional)
     
     @property

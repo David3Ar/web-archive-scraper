@@ -27,27 +27,17 @@ class MoodleConfig(BaseConfig):
     # Security: Restrict downloads to trusted hosts only
     allowed_resource_hosts: tuple[str, ...] = ("elearning.ovgu.de",)
     
-    # Resource download policy FOR ROSELITE!
-    include_mode_raw: bool = False
-    include_mode_dl: bool = True
-    include_archive_zip: bool = True        # zip if present
-    include_archive_tgz: bool = False
-    include_images: bool = False
-    include_pdfs: bool = False                 
-    include_url_txt: bool = False
+    profile_dir: str = ".pw_profile_moodle"
+    out_dir: Path = Path("data/moodle-fallback")
     
-    # Runtime / Browser settings
-    profile_dir: str = ".pw_profile_moodle"   # Separate profile for Moodle
-    out_dir: Path = Path("data/moodle")       # Output directory
-    pdf_format: str = "A4"
-    print_background: bool = True
-    headless: bool = True
-    
-    # Downloader strategy: "request", "click", or "auto"
-    # "auto" is recommended for Moodle as some resources require click-based downloads
-    downloader_strategy: str = "auto"
-    
-    # Moodle-specific: Which module types to scrape
-    # None = use default ("/mod/resource/view.php", "/mod/folder/view.php")
-    resource_module_patterns: Optional[tuple[str, ...]] = None
+    headless: bool = False # Moodle currently needs headless
 
+    
+    #########################################################
+    # Moodle-specific settings
+    #########################################################
+    
+    # Which module types to scrape ?
+    resource_module_patterns: Optional[tuple[str, ...]] = None # use default: ("/mod/resource/view.php", "/mod/folder/view.php")
+        # "/mod/url/view.php",  # if you want to scrape URL resources
+        # "/mod/page/view.php"  # if you want to scrape Page resources

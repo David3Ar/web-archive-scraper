@@ -20,11 +20,14 @@ class SEConfig(RoeseliteConfig):
     Configuration for SE (Software Engineering) course scraper.
     Extends RoeseliteConfig with SE-specific settings.
     """
-    # Runtime / Browser settings (SE-specific overrides)
-    profile_dir: str = ".pw_profile_se"      # persistent browser profile (cookies, session)
-    out_dir: Path = Path("data/se2526")      # root output directory
-
     
+    base: str = "https://se.cs.ovgu.de"
+
+    profile_dir: str = ".pw_profile_se"      # persistent browser profile (cookies, session)
+    out_dir: Path = Path("data/se-itpm")      # root output directory
+
+    allowed_resource_hosts: tuple[str, ...] = ("se.cs.ovgu.de",)
+
 
 def main() -> None:
     """Main entry point for SE scraper."""
